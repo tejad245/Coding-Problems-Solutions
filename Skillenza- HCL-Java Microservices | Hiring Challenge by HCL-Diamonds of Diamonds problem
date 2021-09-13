@@ -1,4 +1,4 @@
-Diamond of Diamonds
+/*Diamond of Diamonds
 Given width of diamond, output the diamond pattern as shown below
 
 For width 2, the pattern is
@@ -77,7 +77,7 @@ Environment
 Read from STDIN and write to STDOUT.
 
 
-#solution
+#solution */
 
 import java.util.*;
 import java.lang.*;
