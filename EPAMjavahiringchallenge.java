@@ -1,4 +1,4 @@
-//Hiring Challenge by EPAM Systems ,Java Hiring Challenge
+/*Hiring Challenge by EPAM Systems ,Java Hiring Challenge
 
 Problem Statement
 Vikram Betal (60 Marks)
@@ -50,6 +50,8 @@ Output
 Explanation
 Test Case 1: As explained in the example.
 Test Case 2: There is no pair with equal values and different indexes.
+*/
+
 
 import java.io.*;
 import java.util.*;
