@@ -1,4 +1,4 @@
-Oil Spill
+?* #Oil Spill
 You are given n containers lined up, each holding a certain volume of oil. A sequence of n-1 steps is performed. The oil in the first container is emptied into the second, and once this step is complete, the oil in the second is emptied into the third and this process is continued till the last. During the emptying step, any excess volume gets spilt. The objective is to calculate the volume of oil collected in the last container and also the volume of oil spilt during the entire sequence of steps.
 
 Input Format
@@ -36,7 +36,7 @@ For the case
 1 2 3
 There are 3 containers. The initial volume of oil in the first container is 1 unit and in the second is 2 units. The capacity of the second container is 3 units. When the first container is emptied into the second, the total volume of oil in the second container becomes 3 units and there is no spillage so far. The capacity of the third container is 4 units and it’s initial volume of oil in it is 3 units. When the second container is emptied into it, it can only hold an extra 1 unit and the remaining 2 units gets spilled. So during the steps, the final volume of oil in the last container is 4 units and the volume of oil spilt is 2 units.
 
-
+*/
 
 
 import java.util.*;
