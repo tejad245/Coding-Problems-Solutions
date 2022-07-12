@@ -1,0 +1,245 @@
+Oil Spill
+You are given n containers lined up, each holding a certain volume of oil. A sequence of n-1 steps is performed. The oil in the first container is emptied into the second, and once this step is complete, the oil in the second is emptied into the third and this process is continued till the last. During the emptying step, any excess volume gets spilt. The objective is to calculate the volume of oil collected in the last container and also the volume of oil spilt during the entire sequence of steps.
+
+Input Format
+The first line of input consists of an integer t denoting the number of test cases. Each test case consists of three lines. The first line of each test case consists of an integer n denoting the number of containers. The second line consists of n space separated integers each (v) denoting the total oil holding capacity of the container. The third line consists of n space separated integers each (i) denoting the initial volume of oil present in the container at that position.
+
+Output Format
+For each test case output the final the volume of oil collected in the container at the last position and also the total volume of oil spilt during the sequence of steps, both values separated by a space.
+
+Sample Input
+3
+3
+2 3 4
+1 2 3
+3
+1 2 3
+0 0 0
+4
+1 2 3 4
+1 1 1 1
+Sample Output
+4 2
+0 0
+4 0
+Constraints
+1 <= t <= 1000
+2 <= n <= 1000
+1 <= v <= 1000
+0 <= i <= 1000
+i <= v
+Explanation
+For the case
+
+3
+2 3 4
+1 2 3
+There are 3 containers. The initial volume of oil in the first container is 1 unit and in the second is 2 units. The capacity of the second container is 3 units. When the first container is emptied into the second, the total volume of oil in the second container becomes 3 units and there is no spillage so far. The capacity of the third container is 4 units and it’s initial volume of oil in it is 3 units. When the second container is emptied into it, it can only hold an extra 1 unit and the remaining 2 units gets spilled. So during the steps, the final volume of oil in the last container is 4 units and the volume of oil spilt is 2 units.
+
+
+
+
+import java.util.*;
+
+class solution{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t>0){
+             int n=sc.nextInt();
+             int []a=new int[n];
+             int []b=new int[n];
+             for(int i=0;i<n;i++)
+             {
+                 a[i]=sc.nextInt();
+             }
+             for(int i=0;i<n;i++)
+             {
+                 b[i]=sc.nextInt();
+             }
+             int inicap=a[0];
+             int iniholded=b[0];
+             int waste=0;
+             int cvol=iniholded;
+             for(int i=1;i<n;i++)
+             {
+               cvol+=b[i];
+               if(cvol<=a[i]){
+                   cvol=cvol;
+               }
+               else{
+                   waste+=cvol-a[i];
+                   cvol=a[i];
+               }
+             }
+             System.out.println(cvol+" "+waste);
+             t=t-1;
+        }
+    }
+}
+
+
+
+
+// ----//
+
+
+Combinational Logic Circuit
+You’re given a combinational logic circuit. There are multiple binary inputs with a single binary output. The circuit is in the form of a full binary tree. All inputs are provided at the leaf nodes and every other node is a logic gate.
+
+Input Format
+The first line of input consists of an integer t denoting the number of test cases. The first line of each test case consists of an integer h denoting the height of the tree. First line of line of each test case consists of space separated binary inputs (0 or 1) denoting the inputs to the circuit. Next n-1 lines consists of logic gates space separated.
+
+Output Format
+For each circuit print the output (0 or 1) found after feeding inputs into the circuit.
+
+Sample Input
+3
+2
+1 0
+or
+4
+1 1 0 1 1 0 0 0
+xor nand or and
+or nor
+xnor
+3
+1 1 1 1
+and and
+and
+Sample Output
+1
+0
+1
+Truth table
+A	B	AND	NAND	OR	NOR	XOR	XNOR
+0	0	0	1	0	1	0	1
+0	1	0	1	1	0	1	0
+1	0	0	1	1	0	1	0
+1	1	1	0	1	0	0	1
+Constraints
+1 <= t <= 128
+2 <= h <= 16
+
+Explanation
+For input
+
+4
+1 1 0 1 1 0 0 0
+xor nand or and
+or nor
+xnor
+The tree constructed is below.
+
+circuit_1.png
+
+Solving the circuit one arrives at the output 0.
+
+circuit_2.png
+
+
+import java.util.*;
+class Solution{
+    public static int funcp(int n)
+    { int ans=1;
+        while(n>0)
+        {
+            ans=2*ans;
+            n=n-1;
+        }
+       return ans;
+    }
+    public static int[] funlogic(String [] dumstri,int [] duma)
+    {
+       
+        int len=duma.length;
+        int ret[]=new int[len/2];
+        int kj=0;
+        for(int i=0;i<len;i+=2)
+        {
+            String gate=dumstri[kj];
+            if(gate.equals("and"))
+            {
+                ret[kj]=duma[i]&duma[i+1];
+            }
+            if(gate.equals("or"))
+            {
+                ret[kj]=duma[i]|duma[i+1];
+            }
+            if(gate.equals("xor"))
+            {
+                ret[kj]=duma[i]^duma[i+1];
+            }
+            if(gate.equals("nand"))
+            {
+                int temp=duma[i]&duma[i+1];
+                if(temp==1)
+                {
+                    ret[kj]=0;
+                }
+                else{
+                    ret[kj]=1;
+                }
+            }
+            if(gate.equals("nor"))
+            {
+                int temp=duma[i]|duma[i+1];
+                if(temp==1)
+                {
+                    ret[kj]=0;
+                }
+                else{
+                    ret[kj]=1;
+                }
+            }
+            if(gate.equals("xnor"))
+            {
+                int temp=duma[i]^duma[i+1];
+                if(temp==1)
+                {
+                    ret[kj]=0;
+                }
+                else{
+                    ret[kj]=1;
+                }
+            }
+             kj=kj+1;
+        }
+        return ret;
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t>0){
+            int n=sc.nextInt();
+            int size=funcp(n-1);
+            //System.out.println(size+" size");
+            int a[]=new int[size];
+            for(int i=0;i<size;i++)
+            {
+                a[i]=sc.nextInt();
+            }
+            int dupen=n-1;
+            n=n-1;
+            int []b=a;
+            while(n>0)
+            {
+                String []stri=new String[size/2];
+                for(int i=0;i<size/2;i++)
+                {
+                    stri[i]=sc.next();
+                }
+                if(n==dupen){
+                     b=funlogic(stri,b);
+                }
+                else{
+                    b=funlogic(stri,b);
+                }
+                size=size/2;
+                n=n-1;
+            }
+            System.out.println(b[0]);
+            t=t-1;
+        }
+    }
+}
