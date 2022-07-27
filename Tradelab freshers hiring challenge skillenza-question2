@@ -1,0 +1,179 @@
+"""
+Cross of Crosses
+Given a side length of a square s, output a cross using the token below as its diagonals
+
+\/
+/\
+Given length 4 the pattern is
+
+\/    \/
+/\    /\
+  \/\/  
+  /\/\  
+  \/\/  
+  /\/\  
+\/    \/
+/\    /\
+Given length 2 the pattern is
+
+\/\/
+/\/\
+\/\/
+/\/\
+Given length 1 the pattern is
+
+\/
+/\
+Given length 3 the pattern is
+
+\/  \/
+/\  /\
+  \/  
+  /\  
+\/  \/
+/\  /\
+Input Format
+The first line of input consists of an integer t denoting the number of test cases. Next t test cases follow. Each test case consists of one line. 
+Each line of test case consists of an integer denoting the side length of the square.
+
+Output Format
+For each length output the cross pattern.
+
+Constraints
+1 <= t (number of test cases) <= 100
+
+1 <= s (side length of the square) <= 100
+
+Sample Input
+6
+2
+1
+4
+3
+6
+5
+Sample Output
+\/\/
+/\/\
+\/\/
+/\/\
+\/
+/\
+\/    \/
+/\    /\
+  \/\/  
+  /\/\  
+  \/\/  
+  /\/\  
+\/    \/
+/\    /\
+\/  \/
+/\  /\
+  \/  
+  /\  
+\/  \/
+/\  /\
+\/        \/
+/\        /\
+  \/    \/  
+  /\    /\  
+    \/\/    
+    /\/\    
+    \/\/    
+    /\/\    
+  \/    \/  
+  /\    /\  
+\/        \/
+/\        /\
+\/      \/
+/\      /\
+  \/  \/  
+  /\  /\  
+    \/    
+    /\    
+  \/  \/  
+  /\  /\  
+\/      \/
+/\      /\
+"""
+
+t=int(input())
+for i in range(0,t):
+    n=int(input())
+    outspace=0
+    if(n%2==0):
+        sul=[]
+        sdl=[]
+        for j in range(n,0,-2):
+            space=j-2
+            if(j!=1):
+                su=""
+                for i in range(0,outspace*2):
+                    su+=" "
+                su+="\/"
+                for k in range(0,space*2):
+                    su+=" "
+                su+="\/"
+                sd=""
+                for i in range(0,outspace*2):
+                    sd+=" "
+                sd+="/"
+                sd+="\\"
+                for k in range(0,space*2):
+                    sd+=" "
+                sd+="/"
+                sd+="\\"
+            else:
+                su="\/"
+                sd="/\\"
+            outspace+=1
+            sul.append(su)
+            sdl.append(sd)
+        for x in range(0,len(sul)):
+            print(sul[x])
+            print(sdl[x])
+        for yy in range(len(sul)-1,-1,-1):
+            print(sul[yy])
+            print(sdl[yy])    
+    
+    else:
+        sul=[]
+        sdl=[]
+        for j in range(n,0,-2):
+            su=""
+            sd=""
+            if(j!=1):
+                space=j-2
+                su=""
+                for i in range(0,outspace*2):
+                    su+=" "
+                su+="\/"
+                for k in range(0,space*2):
+                    su+=" "
+                su+="\/"
+                sd=""
+                for i in range(0,outspace*2):
+                    sd+=" "
+                sd+="/"
+                sd+="\\"
+                for k in range(0,space*2):
+                    sd+=" "
+                sd+="/"
+                sd+="\\"
+                outspace+=1
+            else:
+                for nn in range(0,outspace*2):
+                    su+=" "
+                    sd+=" "
+                su+="\/"
+                sd+="/\\"
+            
+            sul.append(su)
+            sdl.append(sd)
+        #print(sdl,sul,"oddddd")
+        for x in range(0,len(sul)):
+            print(sul[x])
+            print(sdl[x])
+        for yy in range(len(sul)-2,-1,-1):
+            print(sul[yy])
+            print(sdl[yy])
