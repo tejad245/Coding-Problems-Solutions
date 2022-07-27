@@ -1,0 +1,88 @@
+"""
+Bit Swapping
+You’re given a pair of matrices having the same size i.e. the same number of rows and the same number of columns. Each matrix element is a bit either 0 or 1. 
+The objective is to find the minimum number of positional swaps that are required in the first matrix in order for its arrangement to match that of the second.
+If the arrangement can never be matched, output -1. A swap is an exchange of element values for a row and column combination with another row and column combination.
+
+Input Format
+The first line contains a single integer t, denoting the number of test cases.
+The first line of each test case contains two space separated integers m and n denoting the number of rows and number of columns. 
+Next m lines each contains n elements of the first matrix. Next m lines each contains n elements of the second matrix.
+
+Output Format
+For each test case print the minimum swaps.
+
+Constraints
+1 <= t <= 1000
+
+1 <= m <= 100
+
+1 <= n <= 100
+
+Sample Input
+6
+2 2
+00
+11
+01
+10
+2 2
+00
+11
+00
+11
+2 2
+00
+11
+01
+00
+1 7
+0011011
+0101101
+1 1
+0
+1
+1 1
+0
+0
+
+
+Sample Output
+1
+0
+-1
+2
+-1
+0
+"""
+
+t=int(input())
+for i in range(0,t):
+    l=list(map(int,input().split()))
+    m=l[0]
+    n=l[1]
+    l1=[]
+    l2=[]
+    one=0
+    zero=0
+    for j in range(0,m):
+        l1.append(input())
+    for j in range(0,m):
+        l2.append(input())
+    for j in range(0,m):
+        first=l1[j]
+        last=l2[j]
+        for k in range(0,len(first)):
+            if(first[k]==last[k]):
+                pass
+            else:
+                if(first[k]=='1'):
+                    one+=1
+                else:
+                    zero+=1
+    if(zero==one and zero!=0):
+        print(zero)
+    if(zero==0 and one==0):
+        print("0")
+    if(zero!=one):
+        print("-1")
