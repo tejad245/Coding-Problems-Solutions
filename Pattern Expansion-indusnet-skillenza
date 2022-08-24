@@ -1,0 +1,82 @@
+Pattern ExpansionExpand the given pattern. 
+The pattern consists of pairs, where each pair consists of a non-empty string of lowercase alphabets followed by a positive integer.
+The pattern a1b3cde2 is expanded as follows
+1 occurrence of a, followed by
+3 occurrences of b, followed by
+2 occurrences of cde
+The expansion is abbbcdecde
+
+Input Format
+The first line of input consists of an integer t denoting the number of test cases. t test cases follow. Each test case consists of two lines.
+The first line of each test case consists of an integer l denoting the length of the pattern. 
+The second line of each test case consists of the pattern which is given by s1i1s2i2 … sn-1in-1snin where
+sj is the jth string
+ij is the jth integer
+
+Output Format
+For each test case, output the string which the pattern expands into.
+
+Sample Input
+3
+8
+a1b3cde2
+2
+a1
+3
+yo2
+
+Sample Output
+abbbcdecde
+a
+yoyo
+
+//code
+import java.util.*;
+import java.lang.*;
+class solution{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t>0)
+        {   t=t-1;
+            int l=sc.nextInt();
+            String s=sc.next();
+            String dumb="";
+            for(int i=0;i<l;i++)
+            {
+                int c= (int) s.charAt(i);
+                int su=0;
+                if(c<97)
+                { su=su*10+ (s.charAt(i)-'0');
+                    for(int j=i+1;j<l;j++)
+                    {
+                        int cc= (int) s.charAt(j);
+                         if(cc<97)
+                         {
+                             int as= s.charAt(j)-'0';
+                             su=su*10+as;
+                         }
+                         else{
+                         break;}
+                    }
+                }
+                if(su!=0) {
+                    for(int m=0;m<su;m++)
+                    {
+                    System.out.print(dumb);
+                    }
+                    dumb="";
+                    su=0;
+                }
+                else
+                {
+                    if(c!=48){
+                    dumb+=s.charAt(i);
+                    }
+                }
+            }
+            System.out.println();
+        }
+        
+    }
+}
